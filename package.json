@@ -3,7 +3,7 @@
   "packagePrefix": "@form-it/",
   "version": "1.0.0",
   "private": true,
-  "description": "High Perfermance Form Component",
+  "description": "High Performance Form Component",
   "author": "余聪 <yucong06@meituan.com>",
   "scripts": {
     "new": "npx edam",
