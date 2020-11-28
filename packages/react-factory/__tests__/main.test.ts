@@ -1,5 +1,5 @@
-import reactFactory from '../src'
+// import reactFactory from '../src'
 
 describe('reactFactory', function () {
-  it('spec case', function () {})
+  it.skip('spec case', function () {})
 })

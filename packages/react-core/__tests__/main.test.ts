@@ -1,5 +1,5 @@
-import reactCore from '../src'
+// import reactCore from '../src'
 
 describe('reactCore', function () {
-  it('spec case', function () {})
+  it.skip('spec case', function () {})
 })
