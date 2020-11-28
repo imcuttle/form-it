@@ -10,6 +10,5 @@
     "jsx": "react",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src"],
   "exclude": ["node_modules", "test", "__tests__"]
 }

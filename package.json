@@ -9,18 +9,8 @@
     "new": "npx edam",
     "test": "npx jest",
     "test:watch": "npm test -- --watch",
-    "preversion": "npm test",
     "bootstrap": "npx lerna bootstrap",
-    "release": "npx lerna publish --conventional-commits -m 'chore(release): publish'",
-    "build": "npm run clean && run-p --print-label \"build:**\"",
-    "dev": "TSC_OPTIONS=\"--watch\" npm run build",
-    "build:es": "tsc $TSC_OPTIONS --outDir es --module es6",
-    "build:cjs": "tsc $TSC_OPTIONS --outDir lib",
-    "build:tds": "tsc $TSC_OPTIONS --emitDeclarationOnly -d",
-    "clean": "rimraf types es lib",
-    "prepare": "npm run build",
-    "version": "npm run changelog",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+    "release": "npx lerna publish --conventional-commits -m 'chore(release): publish'"
   },
   "edam": {
     "source": "pkg",

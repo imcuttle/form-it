@@ -41,5 +41,6 @@
   },
   "dependencies": {
     "@rcp/c.prompt": "^1.0.1"
-  }
+  },
+  "gitHead": "1483960b8342ca6c376865e1c1fc5752b8b1f212"
 }
