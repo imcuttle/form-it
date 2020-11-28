@@ -5,8 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.3 (2020-11-28)
 
-**Note:** Version bump only for package @form-it/core
-
-## 0.0.2 (2020-11-28)
-
-**Note:** Version bump only for package @form-it/core
+**Note:** Version bump only for package @form-it/react-factory

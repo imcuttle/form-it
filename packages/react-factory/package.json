@@ -1,6 +1,6 @@
 {
   "name": "@form-it/react-factory",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publishConfig": {
     "access": "public"
   },
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@form-it/core": "^0.0.0",
-    "@form-it/react-core": "^0.0.2",
+    "@form-it/react-core": "^0.0.3",
     "classnames": "^2.2.6",
     "lodash.isplainobject": "^4.0.6"
   },
