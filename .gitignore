@@ -1,6 +1,6 @@
 .idea/
 .DS_Store
-/node_modules/
+
 dist/
 public/
 **/*debug.log
@@ -8,6 +8,7 @@ coverage/
 .entry
 .dist
 .vscode
+node_modules/
 lib/
 types/
 es/
