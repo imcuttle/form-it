@@ -8,7 +8,7 @@ coverage/
 .entry
 .dist
 .vscode
-/lib/
-/types/
-/es/
+lib/
+types/
+es/
 

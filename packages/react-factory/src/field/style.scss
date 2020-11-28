@@ -1,0 +1,66 @@
+.form-it-react-field {
+  & {
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  &-required {
+    .form-it-react-field__label-text {
+      &:before {
+        display: inline-block;
+        margin-right: 4px;
+        content: '*';
+        color: #f5483b;
+        font-size: 14px;
+        line-height: 1;
+      }
+    }
+  }
+
+  &__ctrl-error {
+    color: #f5483b;
+    font-size: 12px;
+    line-height: 20px;
+    height: 20px;
+    margin-top: 0;
+  }
+
+  &-error {
+  }
+
+  &__label {
+    vertical-align: top;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 32px;
+    padding-right: 4px;
+    display: inline-flex;
+    align-items: baseline;
+  }
+
+  &__label-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+
+  &__ctrl {
+    text-align: left;
+    flex: 1 1 auto;
+    line-height: 32px;
+    overflow: hidden;
+  }
+
+  &__pos-left {
+    text-align: left;
+  }
+
+  &__pos-right {
+    text-align: right;
+  }
+
+  &__pos-top {
+    flex-direction: column;
+  }
+}

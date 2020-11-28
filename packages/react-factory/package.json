@@ -1,0 +1,50 @@
+{
+  "name": "@form-it/react-factory",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "imcuttle <moyuyc95@gmail.com>",
+  "description": "Form it React Component factory with ui layout",
+  "main": "lib",
+  "types": "types",
+  "module": "es",
+  "files": [
+    "lib",
+    "es",
+    "types"
+  ],
+  "scripts": {
+    "test": "../../scripts/run test",
+    "build": "../../scripts/run build",
+    "packlimit": "../../scripts/run packlimit",
+    "dev": "npm run build -- --watch",
+    "prepublishOnly": "npm run build && npm run packlimit",
+    "version": "npm test && npm run packlimit"
+  },
+  "dependencies": {
+    "@form-it/core": "^0.0.0",
+    "@form-it/react-core": "^0.0.0",
+    "classnames": "^2.2.6",
+    "lodash.isplainobject": "^4.0.6"
+  },
+  "keywords": [
+    "imcuttle",
+    "react-factory",
+    "余聪",
+    "form",
+    "it",
+    "form-it"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imcuttle/form-it.git",
+    "directory": "packages/react-factory"
+  },
+  "devDependencies": {
+    "mobx": "^6.0.4",
+    "mobx-react": "^7.0.5",
+    "react": "^17.0.1",
+    "react-router": "^5.2.0"
+  }
+}

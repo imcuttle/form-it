@@ -1,9 +1,12 @@
 {
   "name": "form-it",
+  "packagePrefix": "@form-it/",
   "version": "1.0.0",
+  "private": true,
   "description": "High Perfermance Form Component",
   "author": "余聪 <yucong06@meituan.com>",
   "scripts": {
+    "new": "npx edam",
     "test": "npx jest",
     "test:watch": "npm test -- --watch",
     "preversion": "npm test",
@@ -19,9 +22,22 @@
     "version": "npm run changelog",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
+  "edam": {
+    "source": "pkg",
+    "alias": {
+      "pkg": {
+        "description": "新建package的模板",
+        "type": "file",
+        "url": "./packages/__template",
+        "config": {
+          "output": "./packages/"
+        }
+      }
+    }
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged",
+      "pre-commit": "npx lerna toc && git add README.md && pretty-quick --staged",
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
     }
   },
@@ -29,12 +45,6 @@
   "engines": {
     "node": ">=10"
   },
-  "files": [
-    "es",
-    "types",
-    "lib",
-    "src"
-  ],
   "keywords": [
     "余聪",
     "form",
@@ -44,7 +54,10 @@
   "main": "lib",
   "types": "types",
   "license": "MIT",
-  "repository": "余聪/form-it",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imcuttle/form-it.git"
+  },
   "module": "es",
   "jest": {
     "transform": {
@@ -71,11 +84,17 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/history": "^4.7.8",
     "@types/jest": "^26.0.15",
+    "@types/react": "^17.0.0",
+    "change-case": "^4.1.1",
+    "commander": "^6.2.0",
+    "concurrently": "^5.3.0",
     "conventional-changelog-cli": "^2.1.1",
+    "edam-cli": "^3.3.11",
+    "human-format": "^0.11.0",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lerna": "^3.0.0",
     "lerna-cli": "^3.0.0",
     "lerna-command-toc": "^1.0.1",
     "npm-run-all": "^4.1.5",

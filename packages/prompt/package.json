@@ -1,0 +1,45 @@
+{
+  "name": "@form-it/prompt",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "imcuttle <moyuyc95@gmail.com>",
+  "description": "Prompt when form value changed",
+  "main": "lib",
+  "types": "types",
+  "module": "es",
+  "files": [
+    "lib",
+    "es",
+    "types"
+  ],
+  "scripts": {
+    "test": "../../scripts/run test",
+    "build": "../../scripts/run build",
+    "packlimit": "../../scripts/run packlimit",
+    "dev": "npm run build -- --watch",
+    "prepublishOnly": "npm run build && npm run packlimit",
+    "version": "npm test && npm run packlimit"
+  },
+  "keywords": [
+    "imcuttle",
+    "prompt",
+    "余聪",
+    "form",
+    "it",
+    "form-it"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imcuttle/form-it.git",
+    "directory": "packages/prompt"
+  },
+  "devDependencies": {
+    "@form-it/react-core": "^0.0.0",
+    "react": "^17.0.1"
+  },
+  "dependencies": {
+    "@rcp/c.prompt": "^1.0.1"
+  }
+}

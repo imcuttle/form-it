@@ -3,9 +3,12 @@
     "module": "commonjs",
     "target": "es6",
     "sourceMap": false,
+    "experimentalDecorators": true,
     "declaration": false,
     "moduleResolution": "node",
-    "outDir": "types"
+    "outDir": "types",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
   },
   "include": ["./src"],
   "exclude": ["node_modules", "test", "__tests__"]
