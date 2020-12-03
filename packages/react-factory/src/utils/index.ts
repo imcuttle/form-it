@@ -24,11 +24,7 @@ export function useExtendQueryHistory() {
     if (!history) {
       return null
     }
-    // @ts-ignore
-    const createPush = (originPush: any, isExtend: boolean) => (
-      loca: Path | (LocationDescriptor<any> & { query: any }),
-      ...args: any[]
-    ) => {
+    const createPush = (originPush: any, isExtend: boolean) => (loca: any, ...args: any[]) => {
       if (typeof loca === 'string') {
         return originPush(loca, args)
       }

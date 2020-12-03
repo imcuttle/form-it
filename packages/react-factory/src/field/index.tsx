@@ -10,7 +10,7 @@ import { observer, Observer } from 'mobx-react'
 import { RuleObj } from '../plugins/validation'
 import { useLocationWithQuery, useExtendQueryHistory } from '../utils'
 
-export { FieldItemInput } from '@form-it/react-core'
+export { FieldItemInput, useFormItField, FormItFieldConsumer } from '@form-it/react-core'
 
 export type FormItReactLayoutFieldProps<ExtraProps = any> = {
   className?: string
@@ -52,7 +52,7 @@ export default function createFieldComponent(FieldUIComponent: React.ComponentTy
         const dispose = reaction(
           () => fieldCtx?.value,
           debounce((arg, _prev, _r) => {
-            if (fieldCtx?.value) {
+            if (fieldCtx && typeof fieldCtx.value !== 'undefined') {
               history?.replaceExtend({ query: { [urlName]: arg } })
             }
           }, 200)

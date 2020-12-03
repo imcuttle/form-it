@@ -33,6 +33,8 @@ try {
       prefix: 'build:tds'
     }
   ])
+
+  execSync(`${rootBin}/copyfiles -u 1 src/**/*.scss es && ${rootBin}/copyfiles -u 1 src/**/*.scss lib`, {})
   process.exitCode = exitCode
 } catch (ex) {
   console.error(ex)

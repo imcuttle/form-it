@@ -1,11 +1,11 @@
 {
-  "name": "@form-it/react-core",
-  "version": "0.0.3",
+  "name": "@form-it/react-antd",
+  "version": "0.0.0",
   "publishConfig": {
     "access": "public"
   },
   "author": "imcuttle <moyuyc95@gmail.com>",
-  "description": "React core for form it",
+  "description": "Form it form antd",
   "main": "lib",
   "types": "types",
   "module": "es",
@@ -14,6 +14,10 @@
     "es",
     "types"
   ],
+  "peerDependencies": {
+    "mobx": "^6.0.4",
+    "mobx-react": "^7.0.5"
+  },
   "scripts": {
     "test": "../../scripts/run test",
     "build": "../../scripts/run build",
@@ -24,7 +28,7 @@
   },
   "keywords": [
     "imcuttle",
-    "react-core",
+    "react-antd",
     "imcuttle",
     "form",
     "it",
@@ -33,13 +37,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/imcuttle/form-it.git",
-    "directory": "packages/react-core"
+    "directory": "packages/react-antd"
   },
   "devDependencies": {
-    "@form-it/core": "^0.0.3",
-    "mobx": "^6.0.4",
-    "mobx-react": "^7.0.5",
-    "react": "^17.0.1"
+    "antd": "^4.9.1"
   },
-  "gitHead": "1483960b8342ca6c376865e1c1fc5752b8b1f212"
+  "dependencies": {
+    "@form-it/react-factory": "^0.0.3"
+  }
 }

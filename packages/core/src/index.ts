@@ -202,7 +202,7 @@ export default class FormIt extends AwaitEventEmitter {
     return ctxAfter.errorInfo
   }
 
-  async validate(fields?: string[], { breakWhenError = false } = {}) {
+  async validate(fields: string[] = [], { breakWhenError = false } = {}) {
     runInAction(() => {
       this.state.isValidating = true
       this.emitSync('validate:before', fields, { breakWhenError })
