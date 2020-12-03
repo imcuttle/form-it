@@ -17,7 +17,7 @@ jobs:
         provider: pages
         skip_cleanup: true
         github_token: ${GH_TOKEN} # Set in travis-ci.org dashboard
-        local_dir: dist
+        local_dir: example/dist
 
     - stage: Unit testing
       before_script: npx lerna run build && npm install codecov --no-save

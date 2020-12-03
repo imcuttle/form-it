@@ -35,9 +35,7 @@ export type CommonFormItReadLayoutFieldProps = {
 
 interface FormItReactLayoutFieldRefType {}
 
-export default function createFieldComponent(FieldUIComponent: React.ComponentType) {
-  type PropsType = React.ComponentProps<typeof FieldUIComponent>
-
+export default function createFieldComponent<PropsType = unknown>(FieldUIComponent: React.ComponentType) {
   const FieldContainerSyncUrl = function FieldContainerSyncUrl(props: any) {
     const { syncUrl, name } = props
 

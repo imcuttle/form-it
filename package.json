@@ -8,7 +8,7 @@
   "scripts": {
     "new": "npx edam",
     "example": "cd example && npx webpack serve",
-    "example:build": "cd example && npx webpack -p",
+    "example:build": "cd example && npx webpack",
     "test": "npx jest",
     "test:watch": "npm test -- --watch",
     "bootstrap": "npx lerna bootstrap",

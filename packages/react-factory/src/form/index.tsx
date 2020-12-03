@@ -16,9 +16,7 @@ export type FormItReactLayoutProps<ExtraProps = any> = {
 
 export type FormItReactLayoutRefType = FormItReactRefType
 
-export default function createFormComponent(FormUIComponent: React.ComponentType) {
-  type PropsType = React.ComponentProps<typeof FormUIComponent>
-
+export default function createFormComponent<PropsType = unknown>(FormUIComponent: React.ComponentType) {
   const FormItReactLayout = React.forwardRef<FormItReactLayoutRefType, FormItReactLayoutProps<PropsType>>(
     function FormItReactLayout(
       {
