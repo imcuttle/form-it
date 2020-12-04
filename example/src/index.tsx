@@ -31,6 +31,9 @@ const App = () => {
         <Select.Option value="antd">AntdForm</Select.Option>
         <Select.Option value="antd-controlled">AntdForm 受控</Select.Option>
       </Select>
+      <a href="https://github.com/imcuttle/form-it/tree/master/example/src" target={'_blank'}>
+        查看源码
+      </a>
       {isRender && (
         <div>
           {type === 'formIt' && <FormItDemo />}
