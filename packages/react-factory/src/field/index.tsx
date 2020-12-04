@@ -33,7 +33,7 @@ export type CommonFormItReadLayoutFieldProps = {
   labelSuffix?: ReactNode
 }
 
-interface FormItReactLayoutFieldRefType {}
+// interface FormItReactLayoutFieldRefType {}
 
 export default function createFieldComponent<PropsType = unknown>(FieldUIComponent: React.ComponentType) {
   const FieldContainerSyncUrl = function FieldContainerSyncUrl(props: any) {
@@ -109,78 +109,77 @@ export default function createFieldComponent<PropsType = unknown>(FieldUICompone
     )
   })
 
-  const FormItReactLayoutField = React.forwardRef<
-    FormItReactLayoutFieldRefType,
-    FormItReactLayoutFieldProps<PropsType>
-  >(function FormItReactLayoutField(
-    {
-      className,
-      children,
-      name,
-      defaultValue,
-      rule,
-      required,
-      message = '此项必填',
-      syncUrl,
-      label,
-      // labelWidth,
-      ...props
-    },
-    ref
-  ) {
-    React.useImperativeHandle(ref, () => ({}), [])
+  const FormItReactLayoutField = React.forwardRef<any, FormItReactLayoutFieldProps<PropsType>>(
+    function FormItReactLayoutField(
+      {
+        className,
+        children,
+        name,
+        defaultValue,
+        rule,
+        required,
+        message = '此项必填',
+        syncUrl,
+        label,
+        // labelWidth,
+        ...props
+      },
+      ref
+    ) {
+      React.useImperativeHandle(ref, () => ({}), [])
 
-    const content = (
-      <FormItFieldContext.Consumer>
-        {(ctx) => (
-          <Observer>
-            {() => {
-              const innerProps = {
-                name,
-                syncUrl,
-                label,
-                required,
-                ...ctx?.fieldProps,
-                className: c(
-                  className,
-                  ctx && ctx.fieldProps && ctx.fieldProps.className,
-                  name && `form-it-react-field-name-${name}`
-                ),
-                ...props,
-                error: ctx?.error,
-                children: children && typeof children === 'function' ? children(ctx) : children
-              }
-              if (innerProps.syncUrl) {
-                return <FieldContainerSyncUrl {...innerProps} />
-              }
-              return <FieldContainer {...innerProps} />
-            }}
-          </Observer>
-        )}
-      </FormItFieldContext.Consumer>
-    )
+      const content = (
+        <FormItFieldContext.Consumer>
+          {(ctx) => (
+            <Observer>
+              {() => {
+                const innerProps = {
+                  name,
+                  syncUrl,
+                  label,
+                  required,
+                  ...ctx?.fieldProps,
+                  className: c(
+                    className,
+                    ctx && ctx.fieldProps && ctx.fieldProps.className,
+                    name && `form-it-react-field-name-${name}`
+                  ),
+                  ...props,
+                  error: ctx?.error,
+                  children: children && typeof children === 'function' ? children(ctx) : children
+                }
+                if (innerProps.syncUrl) {
+                  return <FieldContainerSyncUrl {...innerProps} />
+                }
+                return <FieldContainer {...innerProps} />
+              }}
+            </Observer>
+          )}
+        </FormItFieldContext.Consumer>
+      )
 
-    const rules = React.useMemo(() => {
-      let newRules: any[] = []
-      if (required) {
-        newRules.push({ required: true })
+      const rules = React.useMemo(() => {
+        let newRules: any[] = []
+        if (required) {
+          newRules.push({ required: true })
+        }
+        if (rule) {
+          newRules = newRules.concat(rule)
+        }
+        return newRules
+      }, [rule, required])
+
+      if (!name) {
+        return content
       }
-      if (rule) {
-        newRules = newRules.concat(rule)
-      }
-      return newRules
-    }, [rule, required])
 
-    if (!name) {
-      return content
+      return (
+        <Field defaultValue={defaultValue} name={name} message={message} rule={rules}>
+          {content}
+        </Field>
+      )
     }
-
-    return (
-      <Field defaultValue={defaultValue} name={name} message={message} rule={rules}>
-        {content}
-      </Field>
-    )
-  })
+  )
 
   const FormItReactField = React.memo(FormItReactLayoutField)
 

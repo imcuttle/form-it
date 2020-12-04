@@ -3,6 +3,7 @@ const nps = require('path')
 const { promisify } = require('util')
 const { execSync } = require('child_process')
 const concurrently = require('concurrently')
+const globby = require('globby')
 
 const restArgs = process.argv.slice(2)
 
@@ -17,26 +18,36 @@ const restArgs = process.argv.slice(2)
 
 const rootBin = nps.join(__dirname, '../node_modules/.bin')
 
-try {
-  execSync(`${rootBin}/rimraf es lib types`, { stdio: 'inherit' })
-  const { exitCode } = concurrently([
-    {
-      command: `${rootBin}/tsc --outDir es --module es6 ` + restArgs.join(' '),
-      prefix: 'build:es'
-    },
-    {
-      command: `${rootBin}/tsc --outDir lib --module commonjs ` + restArgs.join(' '),
-      prefix: 'build:cjs'
-    },
-    {
-      command: `${rootBin}/tsc --outDir types --emitDeclarationOnly -d ` + restArgs.join(' '),
-      prefix: 'build:tds'
-    }
-  ])
+;(async () => {
+  try {
+    execSync(`${rootBin}/rimraf es lib types`, { stdio: 'inherit' })
+    const results = await concurrently(
+      [
+        {
+          command: `${rootBin}/tsc --outDir es --module es6 ` + restArgs.join(' '),
+          prefix: 'build:es'
+        },
+        {
+          command: `${rootBin}/tsc --outDir lib --module commonjs ` + restArgs.join(' '),
+          prefix: 'build:cjs'
+        },
+        {
+          command: `${rootBin}/tsc --outDir types --emitDeclarationOnly -d` + restArgs.join(' '),
+          prefix: 'build:tds'
+        }
+      ],
+      { killOthers: ['failure'] }
+    )
 
-  execSync(`${rootBin}/copyfiles -u 1 src/**/*.scss es && ${rootBin}/copyfiles -u 1 src/**/*.scss lib`, {})
-  process.exitCode = exitCode
-} catch (ex) {
-  console.error(ex)
-  process.exitCode = ex.status
-}
+    if (globby.sync(['src/**/*.scss'], { cwd: process.cwd() }).length) {
+      execSync(`${rootBin}/copyfiles -u 1 src/**/*.scss es && ${rootBin}/copyfiles -u 1 src/**/*.scss lib`, {
+        stdio: 'inherit'
+      })
+      execSync(`${rootBin}/sass lib/ --no-source-map && ${rootBin}/sass es/ --no-source-map`, { stdio: 'inherit' })
+    }
+    process.exitCode = 0
+  } catch (ex) {
+    console.error(ex)
+    process.exitCode = ex.status || 1
+  }
+})()

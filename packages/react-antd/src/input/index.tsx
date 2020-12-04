@@ -4,7 +4,10 @@ import { InputProps } from 'antd/es/input'
 import { observer } from 'mobx-react'
 import { useFormItField } from '@form-it/react-factory'
 
-const FormItAntdInput = React.forwardRef<Input, InputProps>(function FormItAntdInput(props, ref) {
+const FormItAntdInput = React.forwardRef<React.PickComponentRefType<typeof Input>, InputProps>(function FormItAntdInput(
+  props,
+  ref
+) {
   const fieldCtx = useFormItField()
 
   if (fieldCtx) {
