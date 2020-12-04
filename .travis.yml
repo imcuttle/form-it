@@ -8,11 +8,15 @@ cache:
   directories:
     - node_modules
 
+after_script:
+  - npm run bootstrap
+  - npx lerna run build
+
 jobs:
   include:
     - stage: Document deploy
       allow_failure: true
-      script: npx lerna run build && npm run example:build
+      script: npm run example:build
       deploy:
         provider: pages
         skip_cleanup: true
@@ -20,6 +24,6 @@ jobs:
         local_dir: example/dist
 
     - stage: Unit testing
-      before_script: npx lerna run build && npm install codecov --no-save
+      before_script: npm install codecov --no-save
       script: npm test -- --coverage
       after_script: codecov --token=$CODECOV_TOKEN
