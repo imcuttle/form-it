@@ -8,7 +8,8 @@ cache:
   directories:
     - node_modules
 
-before_script:
+install:
+  - npm ci
   - npm run bootstrap
   - npx lerna run build
 
