@@ -6,7 +6,6 @@
   "description": "High Performance Form Component",
   "author": "imcuttle <imcuttle@163.com>",
   "scripts": {
-    "demo": "dumi",
     "new": "npx edam",
     "example": "cd example && npx webpack serve",
     "example:build": "cd example && npx webpack",
@@ -87,7 +86,6 @@
     "conventional-changelog-cli": "^2.1.1",
     "copyfiles": "^2.4.1",
     "css-loader": "^5.0.1",
-    "dumi": "^1.0.37",
     "edam-cli": "^3.3.11",
     "globby": "^11.0.1",
     "html-webpack-plugin": "^4.5.0",

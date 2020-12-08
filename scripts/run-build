@@ -32,7 +32,7 @@ const rootBin = nps.join(__dirname, '../node_modules/.bin')
           prefix: 'build:cjs'
         },
         {
-          command: `${rootBin}/tsc --outDir types --emitDeclarationOnly -d` + restArgs.join(' '),
+          command: `${rootBin}/tsc --outDir types --emitDeclarationOnly -d ` + restArgs.join(' '),
           prefix: 'build:tds'
         }
       ],

@@ -3,7 +3,7 @@ import c from 'classnames'
 import { debounce } from 'lodash'
 import { Field, FieldItemInput, FormItFieldContext, FormItFieldProps, useFormItField } from '@form-it/react-core'
 
-import './style.scss'
+// import './style.scss'
 import { reaction } from 'mobx'
 import { ReactNode, useEffect, useLayoutEffect } from 'react'
 import { observer, Observer } from 'mobx-react'

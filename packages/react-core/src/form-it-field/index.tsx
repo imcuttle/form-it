@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { useFormIt } from '../'
-import { observer, Observer, useLocalStore } from 'mobx-react'
+import { observer, Observer, useLocalObservable } from 'mobx-react'
 import { RuleType } from '@form-it/core'
 import { action } from 'mobx'
 import { useRef } from 'react'
@@ -11,7 +11,7 @@ const useFormItFieldItem = (name: string, rule?: RuleType, message?: string) => 
 
   const defaultChangeTypeRef = useRef('init')
 
-  const state = useLocalStore(() => ({
+  const state = useLocalObservable(() => ({
     isSetted: false,
     value: null,
     clear() {
@@ -24,7 +24,7 @@ const useFormItFieldItem = (name: string, rule?: RuleType, message?: string) => 
     }
   }))
 
-  const errorState = useLocalStore(() => ({
+  const errorState = useLocalObservable(() => ({
     message: null,
     // 是否发生过错误
     hadMessage: false,
@@ -75,15 +75,17 @@ const useFormItFieldItem = (name: string, rule?: RuleType, message?: string) => 
     }
     formIt.on('reset', onReset)
 
-    const onValidate = (result: any) => {
-      // console.log(name, result)
-      if (result && Object.hasOwnProperty.call(result, name)) {
-        errorState.setValue(result[name].message)
-      } else {
-        errorState.clear()
+    const onValidate = ({ errorInfo, name: errorName }: any) => {
+      // console.log(errorInfo, errorName, name)
+      if (errorName === name) {
+        if (errorInfo) {
+          errorState.setValue(errorInfo.message)
+        } else {
+          errorState.clear()
+        }
       }
     }
-    formIt.on('validate', onValidate)
+    formIt.on('validateField', onValidate)
 
     const onFieldChanged = (changed: any) => {
       if (errorState.hadMessage && changed.name === name) {
@@ -94,39 +96,41 @@ const useFormItFieldItem = (name: string, rule?: RuleType, message?: string) => 
     formIt.on('fieldDidChange', onFieldChanged)
     return () => {
       formIt.off('reset', onReset)
-      formIt.off('validate', onValidate)
+      formIt.off('validateField', onValidate)
     }
   }, [errorState, state, name, formIt])
 
-  return !formIt
-    ? null
-    : {
-        get globalValue() {
-          return formIt?.value
-        },
-        formIt,
-        fieldProps: formIt.fieldProps,
-        // 异步触发 mobx observable, 保证访问 error 属性的组件会触发更新
-        get error() {
-          return errorState.message
-        },
-        // 异步触发 mobx observable
-        get value() {
-          return formIt?.value[name]
-        },
-        get stateValue() {
-          return state.value
-        },
-        name,
-        onStateValueValue: action((newValue: any) => {
-          state.setValue(newValue)
-        }),
-        onChange: action((newValue: any, changeType = defaultChangeTypeRef.current) => {
-          // console.log('defaultChangeTypeRef.current', defaultChangeTypeRef.current, changeType)
-          formIt.assignValue({ [name]: newValue }, changeType)
-          state.clear()
-        })
-      }
+  return React.useMemo(() => {
+    return !formIt
+      ? null
+      : {
+          get globalValue() {
+            return formIt?.value
+          },
+          formIt,
+          fieldProps: formIt.fieldProps,
+          // 异步触发 mobx observable, 保证访问 error 属性的组件会触发更新
+          get error() {
+            return errorState.message
+          },
+          // 异步触发 mobx observable
+          get value() {
+            return formIt?.value[name]
+          },
+          get stateValue() {
+            return state.value
+          },
+          name,
+          onStateValueValue: action((newValue: any) => {
+            state.setValue(newValue)
+          }),
+          onChange: action((newValue: any, changeType = defaultChangeTypeRef.current) => {
+            // console.log('defaultChangeTypeRef.current', defaultChangeTypeRef.current, changeType)
+            formIt.assignValue({ [name]: newValue }, changeType)
+            state.clear()
+          })
+        }
+  }, [formIt, state, errorState])
 }
 
 export type FieldItemInput = ReturnType<typeof useFormItFieldItem>

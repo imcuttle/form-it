@@ -2,7 +2,7 @@ import * as React from 'react'
 import c from 'classnames'
 import { FormItReactProps, Form, FormItReactRefType } from '@form-it/react-core'
 
-import './style.scss'
+// import './style.scss'
 import { CommonFormItReadLayoutFieldProps } from '..'
 import presetPlugins from '../plugins'
 

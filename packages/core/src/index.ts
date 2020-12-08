@@ -24,6 +24,7 @@ export interface IValueWillChange<T = any> extends MobxValueWillChange<T> {
 
 export interface IValueDidChange<T = any> extends MobxValueDidChange<T> {
   changeType: string
+  name: string
 }
 
 export type FormItPlugin = (formIt: FormIt) => void
@@ -37,7 +38,7 @@ export default class FormIt extends AwaitEventEmitter {
   public defaultErrorMsgs: Record<string, string> = {}
   public state = observable({ submitTimes: 0, isValidating: false })
 
-  public tmp = { changeType: 'user' }
+  public tmp = { changeType: 'user', isFirstSubmit: false }
 
   constructor(value?: any) {
     super()
@@ -114,6 +115,8 @@ export default class FormIt extends AwaitEventEmitter {
     if (this.state.isValidating) {
       return
     }
+
+    this.tmp.isFirstSubmit = false
 
     const done = async () => {
       await this.emit('submit', this.value)

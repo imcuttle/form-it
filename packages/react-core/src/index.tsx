@@ -75,10 +75,9 @@ const FormItReact = React.forwardRef<FormItReactRefType, FormItReactProps>(funct
       return parentFormIt.compose(formItField.name, formIt)
     }
   }, [formItField?.name, parentFormIt, formIt])
-
   React.useMemo(() => {
-    if (props.value || props.defaultValue) {
-      formIt.setValue(props.value || props.defaultValue)
+    if (props.value || props.defaultValue || {}) {
+      formIt.setValue(props.value || props.defaultValue || {})
     }
   }, [props.value || props.defaultValue, formIt])
   React.useMemo(() => {
