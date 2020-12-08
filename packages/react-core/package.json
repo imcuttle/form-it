@@ -1,6 +1,6 @@
 {
   "name": "@form-it/react-core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publishConfig": {
     "access": "public"
   },
@@ -36,7 +36,7 @@
     "directory": "packages/react-core"
   },
   "devDependencies": {
-    "@form-it/core": "^0.0.3",
+    "@form-it/core": "^0.0.4",
     "mobx": "^6.0.4",
     "mobx-react": "^7.0.5",
     "react": "^17.0.1"
