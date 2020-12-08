@@ -251,7 +251,7 @@ export default class FormIt extends AwaitEventEmitter {
         )
       }
     }
-    // eslint-disable-next-line promise/catch-or-return
+
     Promise.all(tasks).finally(() => {
       if (!resolved) {
         resolve(done())
