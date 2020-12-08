@@ -1,6 +1,6 @@
 {
   "name": "@form-it/prompt",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publishConfig": {
     "access": "public"
   },
@@ -36,7 +36,7 @@
     "directory": "packages/prompt"
   },
   "devDependencies": {
-    "@form-it/react-core": "^0.0.4",
+    "@form-it/react-core": "^0.0.5",
     "react": "^17.0.1"
   },
   "dependencies": {

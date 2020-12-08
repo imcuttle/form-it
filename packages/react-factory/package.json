@@ -1,6 +1,6 @@
 {
   "name": "@form-it/react-factory",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publishConfig": {
     "access": "public"
   },
@@ -23,8 +23,8 @@
     "version": "npm test && npm run packlimit"
   },
   "dependencies": {
-    "@form-it/core": "^0.0.4",
-    "@form-it/react-core": "^0.0.4",
+    "@form-it/core": "^0.0.5",
+    "@form-it/react-core": "^0.0.5",
     "classnames": "^2.2.6",
     "lodash.isplainobject": "^4.0.6"
   },
