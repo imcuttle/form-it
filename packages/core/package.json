@@ -36,8 +36,10 @@
     "directory": "packages/core"
   },
   "devDependencies": {
-    "await-event-emitter": "^2.0.2",
     "mobx": "^6.0.4"
+  },
+  "dependencies": {
+    "await-event-emitter": "^2.0.2"
   },
   "gitHead": "1483960b8342ca6c376865e1c1fc5752b8b1f212"
 }
