@@ -29,11 +29,11 @@ const validatePlugin: FormItPlugin = (formIt) => {
         if (typeof info === 'string') {
           return { message: info, rule: eachRule }
         }
-        return false
-      }
-      const errorInfo = await _validate(value, eachRule, { defaultErrorMsg, extraArgs })
-      if (errorInfo) {
-        return errorInfo
+      } else {
+        const errorInfo = await _validate(value, eachRule, { defaultErrorMsg, extraArgs })
+        if (errorInfo) {
+          return errorInfo
+        }
       }
     }
   }
