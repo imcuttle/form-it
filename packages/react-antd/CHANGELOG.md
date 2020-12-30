@@ -5,16 +5,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.0.5](https://github.com/imcuttle/form-it/compare/v0.0.4...v0.0.5) (2020-12-08)
 
-**Note:** Version bump only for package @form-it/react-core
+**Note:** Version bump only for package @form-it/react-antd
 
 ## [0.0.4](https://github.com/imcuttle/form-it/compare/v0.0.3...v0.0.4) (2020-12-08)
 
-**Note:** Version bump only for package @form-it/react-core
-
-## 0.0.3 (2020-11-28)
-
-**Note:** Version bump only for package @form-it/react-core
-
-## 0.0.2 (2020-11-28)
-
-**Note:** Version bump only for package @form-it/react-core
+**Note:** Version bump only for package @form-it/react-antd

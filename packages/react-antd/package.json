@@ -1,6 +1,6 @@
 {
   "name": "@form-it/react-antd",
-  "version": "0.0.0",
+  "version": "0.0.5",
   "publishConfig": {
     "access": "public"
   },
@@ -43,6 +43,6 @@
     "antd": "^4.9.1"
   },
   "dependencies": {
-    "@form-it/react-factory": "^0.0.3"
+    "@form-it/react-factory": "^0.0.5"
   }
 }
